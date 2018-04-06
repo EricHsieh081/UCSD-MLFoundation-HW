@@ -54,3 +54,31 @@ assert( len(testy_L2) == 62 )
 assert( np.all( testy_L2[50:60] == [ 0.,  0.,  0.,  0.,  2.,  0.,  2.,  0.,  0.,  0.] )  )
 assert( np.all( testy_L2[0:10] == [ 0.,  0.,  0.,  1.,  1.,  0.,  1.,  0.,  0.,  1.] ) )
 #==================================================================
+
+# Below shows the L1 Form distance
+
+def distanceL1(v1, v2):
+    return (np.sum(abs(v1-v2)))
+
+def classifyL1(trainx, curx):
+    minIndex = 0
+    minDis = distanceL1(trainx[0], curx)
+    for i in range(len(trainx)):
+        curDis = distanceL1(trainx[i], curx)
+        if (curDis < minDis):
+            minDis = curDis
+            minIndex = i
+    return minIndex
+
+def NN_L1(trainx, trainy, testx):
+    # inputs: trainx, trainy, testx <-- as defined above
+    # output: an np.array of the predicted values for testy 
+    
+    ### BEGIN SOLUTION
+    predict = np.zeros(len(testx))
+    for i in range(len(testx)):
+        index = classifyL1(trainx, testx[i])
+        predict[i] = trainy[index]
+    print(predict)
+    return predict   
+    ### END SOLUTION
