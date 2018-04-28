@@ -8,3 +8,6 @@ The goal is to figure out the theory of classification using gaussian distributi
 
 # Week6: Support Vector Machine
 The goal is to examine which C is the best choice for the SVM to train and test data. Fold-Crossing Validation is used to solve the problem.
+
+
+
